@@ -8,6 +8,7 @@ export const SingleProduct = (props) => {
 
   const buy = () => {
     onCalculateTotal(price * quantity);
+    setQuantity(0);
   };
 
   return (

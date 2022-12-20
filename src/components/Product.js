@@ -13,7 +13,6 @@ const ProductList = () => {
     { id: 1, name: "Android", price: 100 },
     { id: 2, name: "Apple", price: 200 },
     { id: 3, name: "Nokia", price: 300 },
-    { id: 4, name: "Samsung", price: 400 },
   ]);
   const calculateTotal = (price) => {
     setTotal(total + parseInt(price));
@@ -32,6 +31,12 @@ const ProductList = () => {
     setProducts([...products, product]);
   };
 
+  const resetTotal = () => {
+    if (total !== 0) {
+      setTotal(0);
+    }
+  };
+
   return (
     <div className="container-sm" style={{ padding: 20 }}>
       <ProductForm index={products.length + 1} onCreateProduct={addProduct} />
@@ -47,6 +52,12 @@ const ProductList = () => {
       ))}
 
       <Total totalCash={total} />
+      <button
+        onClick={resetTotal}
+        style={{ display: total ? "block" : "none" }}
+      >
+        Reset
+      </button>
     </div>
   );
 };
